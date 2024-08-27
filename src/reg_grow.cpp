@@ -284,7 +284,8 @@ void ApplyRegionGrow(RegionGrow *rg)
       rg->SEGS.at<Vec3b>(i, j) = val == 0 ? Vec3b(255, 255, 255) : Vec3b(val * 35, val * 90, val * 30);
     }
   }
-
+  // save segmented image with high quality >=1000 dpi
+  imwrite("../images/segmented.jpg", rg->SEGS, {IMWRITE_JPEG_QUALITY, 1000});
   imshow("Region Growing", rg->SEGS);
   waitKey(0);
 }
